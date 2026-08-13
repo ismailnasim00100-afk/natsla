@@ -2,878 +2,449 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NATSLA | منصتك التجارية</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NATSLA</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 body{
-  font-family:Arial,Tahoma,sans-serif;
-  background:#050914;
-  color:#fff;
-  min-height:100vh;
-  overflow-x:hidden;
+font-family:Arial,Tahoma,sans-serif;
+background:#050914;color:#fff;min-height:100vh
 }
+button,input,select{font:inherit}
+button{cursor:pointer}
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+.blue{color:#08a5ff}
 
-button,input,textarea,select{
-  font-family:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.page{
-  display:none;
-  min-height:100vh;
-  animation:show .45s ease;
-}
-
-.page.active{
-  display:block;
-}
-
-@keyframes show{
-  from{opacity:0;transform:translateY(15px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* خلفية */
-.bg{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-1;
-  overflow:hidden;
-}
-
-.glow{
-  position:absolute;
-  width:400px;
-  height:400px;
-  border-radius:50%;
-  background:#0077ff;
-  filter:blur(150px);
-  opacity:.16;
-}
-
-.g1{top:-120px;right:-100px}
-.g2{bottom:-150px;left:-120px;background:#00c8ff}
-
-/* NAV */
 nav{
-  height:75px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 7%;
-  border-bottom:1px solid #182235;
-  background:rgba(5,9,20,.78);
-  backdrop-filter:blur(15px);
-  position:sticky;
-  top:0;
-  z-index:10;
+height:72px;padding:0 6%;
+display:flex;align-items:center;justify-content:space-between;
+border-bottom:1px solid #19253a;background:#070c18
+}
+.logo{font-size:29px;font-weight:900;letter-spacing:2px}
+nav button,.btn{
+border:0;border-radius:12px;padding:13px 22px;
+background:#0798ff;color:white;font-weight:bold
 }
 
-.logo{
-  font-size:28px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-.logo span{
-  color:#08a5ff;
-}
-
-.nav-buttons{
-  display:flex;
-  gap:10px;
-}
-
-.small-btn{
-  padding:10px 18px;
-  border-radius:12px;
-  border:1px solid #263651;
-  background:#0c1424;
-  color:#fff;
-}
-
-.small-btn.primary{
-  background:#078fff;
-  border-color:#078fff;
-}
-
-/* HOME */
 .hero{
-  min-height:calc(100vh - 75px);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:40px 20px;
+min-height:calc(100vh - 72px);
+display:flex;align-items:center;justify-content:center;
+text-align:center;padding:30px
 }
-
-.hero-box{
-  max-width:850px;
-}
-
+.hero-box{max-width:850px}
 .badge{
-  display:inline-block;
-  padding:12px 22px;
-  border:1px solid #087dff;
-  border-radius:30px;
-  color:#52baff;
-  background:rgba(0,100,255,.08);
-  margin-bottom:25px;
-  box-shadow:0 0 30px rgba(0,130,255,.12);
+display:inline-block;border:1px solid #087dff;color:#54baff;
+padding:10px 20px;border-radius:30px;margin-bottom:25px
 }
+h1{font-size:clamp(45px,9vw,82px);margin-bottom:20px}
+.hero p{color:#91a0b6;font-size:19px;line-height:1.9}
+.actions{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.actions button{padding:16px 30px}
+.dark{background:#0c1525;border:1px solid #253651}
 
-.hero h1{
-  font-size:clamp(48px,10vw,90px);
-  line-height:1.05;
-  margin-bottom:25px;
-}
-
-.hero h1 span{
-  color:#078fff;
-  text-shadow:0 0 35px rgba(0,145,255,.45);
-}
-
-.hero p{
-  color:#9aa9bf;
-  font-size:19px;
-  line-height:1.9;
-  max-width:650px;
-  margin:auto;
-}
-
-.buttons{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  margin-top:35px;
-  flex-wrap:wrap;
-}
-
-.main-btn{
-  border:0;
-  padding:17px 30px;
-  border-radius:15px;
-  font-size:17px;
-  font-weight:bold;
-  transition:.25s;
-}
-
-.main-btn:hover{
-  transform:translateY(-4px);
-}
-
-.primary{
-  background:#0798ff;
-  color:#fff;
-  box-shadow:0 10px 35px rgba(0,145,255,.25);
-}
-
-.secondary{
-  background:#0b1424;
-  color:#fff;
-  border:1px solid #24344d;
-}
-
-/* LOGIN */
 .center{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:25px;
+min-height:100vh;display:flex;align-items:center;
+justify-content:center;padding:20px
 }
-
 .card{
-  width:100%;
-  max-width:460px;
-  background:rgba(11,19,34,.82);
-  border:1px solid #223452;
-  border-radius:28px;
-  padding:38px;
-  box-shadow:0 25px 80px rgba(0,0,0,.4);
-  backdrop-filter:blur(20px);
+width:100%;max-width:460px;background:#0b1423;
+border:1px solid #263853;border-radius:25px;padding:32px;
+box-shadow:0 20px 70px #0008
 }
-
-.card-logo{
-  text-align:center;
-  font-size:35px;
-  font-weight:900;
-  margin-bottom:10px;
+.card h2{text-align:center;font-size:28px;margin-bottom:8px}
+.sub{text-align:center;color:#8190a7;margin-bottom:28px}
+.field{margin-bottom:17px}
+.field label{display:block;margin-bottom:7px;color:#bdc8d9}
+.field input,.field select{
+width:100%;padding:14px;border-radius:12px;
+border:1px solid #263853;background:#070e1a;color:#fff;outline:none
 }
-
-.card-logo span{
-  color:#0798ff;
-}
-
-.card h2{
-  text-align:center;
-  font-size:27px;
-  margin:15px 0 8px;
-}
-
-.subtitle{
-  text-align:center;
-  color:#8190a7;
-  margin-bottom:30px;
-}
-
-.field{
-  margin-bottom:18px;
-}
-
-.field label{
-  display:block;
-  margin-bottom:8px;
-  color:#bdc8d9;
-}
-
-.field input,
-.field textarea,
-.field select{
-  width:100%;
-  padding:15px;
-  border-radius:13px;
-  border:1px solid #263852;
-  background:#070e1b;
-  color:#fff;
-  outline:none;
-  font-size:15px;
-}
-
-.field textarea{
-  min-height:100px;
-  resize:vertical;
-}
-
-.field input:focus,
-.field textarea:focus,
-.field select:focus{
-  border-color:#078fff;
-  box-shadow:0 0 0 3px rgba(0,143,255,.08);
-}
-
-.full{
-  width:100%;
-  margin-top:8px;
-}
-
+.full{width:100%}
 .back{
-  display:block;
-  text-align:center;
-  margin-top:20px;
-  color:#6dbfff;
-  cursor:pointer;
+display:block;text-align:center;margin-top:20px;color:#55baff;
+cursor:pointer
 }
 
-/* STORE */
-.store-layout{
-  max-width:1100px;
-  margin:auto;
-  padding:45px 20px;
+/* لوحة التحكم */
+.dashboard{background:#060b15}
+.side{
+position:fixed;right:0;top:0;bottom:0;width:240px;
+background:#080f1d;border-left:1px solid #1b2a40;
+padding:25px 15px
 }
-
-.top-title{
-  text-align:center;
-  margin-bottom:35px;
+.side .logo{margin-bottom:35px;text-align:center}
+.side button{
+width:100%;padding:13px;margin-bottom:8px;text-align:right;
+background:transparent;color:#9aa9bd;border:0;border-radius:10px
 }
-
-.top-title h1{
-  font-size:40px;
-  margin-bottom:10px;
+.side button:hover,.side button.active{
+background:#0c2138;color:#fff
 }
-
-.top-title p{
-  color:#8190a7;
+.main{
+margin-right:240px;padding:35px
 }
-
-.store-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:25px;
+.top{
+display:flex;justify-content:space-between;align-items:center;
+margin-bottom:30px
 }
-
-.preview{
-  background:linear-gradient(145deg,#0c182b,#07101f);
-  border:1px solid #233651;
-  border-radius:25px;
-  padding:30px;
-  min-height:430px;
-}
-
-.preview-label{
-  color:#5ebcff;
-  margin-bottom:35px;
-}
-
-.preview-store{
-  background:#0b1423;
-  border:1px solid #263b58;
-  border-radius:20px;
-  padding:30px;
-  text-align:center;
-}
-
-.store-icon{
-  width:75px;
-  height:75px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin:auto auto 20px;
-  border-radius:20px;
-  background:#078fff;
-  font-size:35px;
-}
-
-.preview-store h2{
-  margin-bottom:10px;
-}
-
-.preview-store p{
-  color:#8797ad;
-  line-height:1.8;
-}
-
-.form-card{
-  background:#0b1423;
-  border:1px solid #233651;
-  border-radius:25px;
-  padding:30px;
-}
-
-.form-card h2{
-  margin-bottom:25px;
-}
-
-/* DASHBOARD */
-.dashboard{
-  padding-bottom:50px;
-}
-
-.dash-nav{
-  padding:18px 5%;
-  border-bottom:1px solid #1c2a40;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  background:#070d19;
-}
-
-.dash-content{
-  max-width:1200px;
-  margin:auto;
-  padding:35px 20px;
-}
-
-.welcome{
-  margin-bottom:30px;
-}
-
-.welcome h1{
-  font-size:35px;
-  margin-bottom:8px;
-}
-
-.welcome p{
-  color:#8291a8;
-}
-
 .stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  margin-bottom:25px;
+display:grid;grid-template-columns:repeat(4,1fr);
+gap:15px;margin-bottom:25px
 }
-
-.stat{
-  background:#0b1423;
-  border:1px solid #21344f;
-  border-radius:20px;
-  padding:23px;
+.stat,.panel{
+background:#0b1423;border:1px solid #21344f;
+border-radius:18px;padding:22px
 }
-
-.stat .icon{
-  font-size:25px;
-  margin-bottom:15px;
+.stat small{color:#7f8fa6}
+.stat strong{display:block;font-size:27px;margin-top:10px}
+.grid{
+display:grid;grid-template-columns:2fr 1fr;gap:20px
 }
-
-.stat h3{
-  color:#7f8fa6;
-  font-size:14px;
-  margin-bottom:8px;
+.panel h2{margin-bottom:20px}
+.product{
+display:flex;justify-content:space-between;
+padding:15px 0;border-bottom:1px solid #1c2b40
 }
-
-.stat strong{
-  font-size:27px;
-}
-
-.dashboard-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:20px;
-}
-
-.panel{
-  background:#0b1423;
-  border:1px solid #21344f;
-  border-radius:22px;
-  padding:25px;
-}
-
-.panel h2{
-  margin-bottom:20px;
-}
-
-.chart{
-  height:220px;
-  display:flex;
-  align-items:end;
-  gap:12px;
-  padding:15px;
-  border-radius:15px;
-  background:#07101d;
-}
-
-.bar{
-  flex:1;
-  background:linear-gradient(to top,#078fff,#36c2ff);
-  border-radius:7px 7px 0 0;
-  min-height:25px;
-  box-shadow:0 0 20px rgba(0,150,255,.15);
-}
-
-.activity{
-  display:flex;
-  gap:12px;
-  padding:14px 0;
-  border-bottom:1px solid #1c2a3d;
-}
-
-.activity:last-child{
-  border-bottom:0;
-}
-
-.dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:#0798ff;
-  margin-top:6px;
-}
-
-.activity small{
-  color:#7d8da4;
+.product:last-child{border:0}
+.tag{
+background:#062c49;color:#5fc2ff;padding:5px 10px;
+border-radius:8px;font-size:12px
 }
 
 /* responsive */
 @media(max-width:800px){
-  nav{
-    padding:0 20px;
-  }
-
-  .nav-buttons .small-btn:first-child{
-    display:none;
-  }
-
-  .store-grid,
-  .dashboard-grid{
-    grid-template-columns:1fr;
-  }
-
-  .stats{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .card{
-    padding:28px 20px;
-  }
+.side{width:75px;padding:20px 8px}
+.side .logo{font-size:16px}
+.side button{font-size:0;text-align:center}
+.side button:first-letter{font-size:20px}
+.main{margin-right:75px;padding:20px}
+.stats{grid-template-columns:1fr 1fr}
+.grid{grid-template-columns:1fr}
 }
-
 @media(max-width:500px){
-  .hero h1{
-    font-size:48px;
-  }
-
-  .hero p{
-    font-size:16px;
-  }
-
-  .stats{
-    grid-template-columns:1fr;
-  }
-
-  .top-title h1{
-    font-size:31px;
-  }
+.stats{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
-<div class="bg">
-  <div class="glow g1"></div>
-  <div class="glow g2"></div>
-</div>
-
-<!-- ================= HOME ================= -->
+<!-- الرئيسية -->
 <section id="home" class="page active">
 
 <nav>
-  <div class="logo">N<span>AT</span>SLA</div>
-
-  <div class="nav-buttons">
-    <button class="small-btn" onclick="showPage('login')">تسجيل الدخول</button>
-    <button class="small-btn primary" onclick="showPage('login')">ابدأ الآن</button>
-  </div>
+<div class="logo">N<span class="blue">ATSLA</span></div>
+<button onclick="go('login')">ابدأ الآن 🚀</button>
 </nav>
 
 <div class="hero">
-  <div class="hero-box">
+<div class="hero-box">
 
-    <div class="badge">⚡ مستقبل التجارة يبدأ هنا</div>
+<div class="badge">⚡ مستقبل التجارة العربية</div>
 
-    <h1>
-      ابنِ متجرك<br>
-      مع <span>NATSLA</span>
-    </h1>
+<h1>
+ابنِ تجارتك مع<br>
+<span class="blue">NATSLA</span>
+</h1>
 
-    <p>
-      منصة عربية حديثة تساعدك على إنشاء وإدارة متجرك
-      بطريقة بسيطة، سريعة واحترافية.
-    </p>
+<p>
+منصة جديدة لإدارة متجرك ومنتجاتك وطلباتك
+من مكان واحد — بهوية صنعت من أجلك.
+</p>
 
-    <div class="buttons">
-      <button class="main-btn primary" onclick="showPage('login')">
-        ابدأ الآن 🚀
-      </button>
+<div class="actions">
+<button class="btn" onclick="go('login')">
+ابدأ الآن 🚀
+</button>
 
-      <button class="main-btn secondary" onclick="showPage('login')">
-        اكتشف NATSLA
-      </button>
-    </div>
-
-  </div>
+<button class="btn dark" onclick="go('login')">
+اكتشف المنصة
+</button>
 </div>
 
+</div>
+</div>
 </section>
 
 
-<!-- ================= LOGIN ================= -->
+<!-- تسجيل الدخول -->
 <section id="login" class="page">
 
 <div class="center">
+<div class="card">
 
-  <div class="card">
+<h2>مرحبًا بك في <span class="blue">NATSLA</span></h2>
+<p class="sub">سجل دخولك لإدارة تجارتك</p>
 
-    <div class="card-logo">N<span>AT</span>SLA</div>
-
-    <h2>مرحبًا بعودتك 👋</h2>
-
-    <p class="subtitle">
-      سجّل دخولك وابدأ بإدارة تجارتك
-    </p>
-
-    <div class="field">
-      <label>البريد الإلكتروني</label>
-      <input id="email" type="email" placeholder="example@email.com">
-    </div>
-
-    <div class="field">
-      <label>كلمة المرور</label>
-      <input id="password" type="password" placeholder="••••••••">
-    </div>
-
-    <button class="main-btn primary full" onclick="loginUser()">
-      تسجيل الدخول 🚀
-    </button>
-
-    <span class="back" onclick="showPage('home')">
-      ← العودة للرئيسية
-    </span>
-
-  </div>
-
+<div class="field">
+<label>البريد الإلكتروني</label>
+<input id="email" type="email" placeholder="example@email.com">
 </div>
 
+<div class="field">
+<label>كلمة المرور</label>
+<input id="password" type="password" placeholder="••••••••">
+</div>
+
+<button class="btn full" onclick="login()">
+تسجيل الدخول 🔐
+</button>
+
+<span class="back" onclick="go('home')">
+← العودة
+</span>
+
+</div>
+</div>
 </section>
 
 
-<!-- ================= CREATE STORE ================= -->
-<section id="store" class="page">
+<!-- إنشاء المتجر -->
+<section id="create" class="page">
 
-<div class="store-layout">
+<div class="center">
+<div class="card">
 
-  <div class="top-title">
-    <div class="badge">🏪 الخطوة الثانية</div>
-    <h1>أنشئ متجرك الآن</h1>
-    <p>خلّنا نبني لك واجهة متجر تليق بتجارتك</p>
-  </div>
+<h2>أنشئ متجرك 🏪</h2>
+<p class="sub">خطوتك الأولى نحو تجارتك</p>
 
-  <div class="store-grid">
-
-    <div class="form-card">
-
-      <h2>معلومات المتجر ✨</h2>
-
-      <div class="field">
-        <label>اسم المتجر</label>
-        <input id="storeName"
-               placeholder="مثال: متجر ناتسلا"
-               oninput="previewStore()">
-      </div>
-
-      <div class="field">
-        <label>نوع المتجر</label>
-        <select id="storeType" onchange="previewStore()">
-          <option>إلكترونيات</option>
-          <option>ملابس وأزياء</option>
-          <option>أغذية ومشروبات</option>
-          <option>إكسسوارات</option>
-          <option>خدمات</option>
-          <option>متجر عام</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>وصف المتجر</label>
-        <textarea id="storeDesc"
-          placeholder="اكتب وصفًا قصيرًا لمتجرك..."
-          oninput="previewStore()"></textarea>
-      </div>
-
-      <button class="main-btn primary full"
-              onclick="createStore()">
-        إنشاء المتجر 🚀
-      </button>
-
-    </div>
-
-
-    <div class="preview">
-
-      <div class="preview-label">
-        👁️ معاينة المتجر
-      </div>
-
-      <div class="preview-store">
-
-        <div class="store-icon">🛍️</div>
-
-        <h2 id="previewName">
-          متجري الجديد
-        </h2>
-
-        <p id="previewType">
-          متجر إلكتروني
-        </p>
-
-        <br>
-
-        <p id="previewDesc">
-          هنا سيظهر وصف متجرك بشكل جميل واحترافي.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
+<div class="field">
+<label>اسم المتجر</label>
+<input id="storeName" placeholder="مثال: NATSLA Store">
 </div>
 
+<div class="field">
+<label>رابط المتجر</label>
+<input id="storeSlug" placeholder="my-store">
+</div>
+
+<div class="field">
+<label>نوع النشاط</label>
+<select id="category">
+<option>إلكترونيات</option>
+<option>ملابس</option>
+<option>أغذية</option>
+<option>إكسسوارات</option>
+<option>خدمات</option>
+<option>متجر عام</option>
+</select>
+</div>
+
+<button class="btn full" onclick="createStore()">
+إنشاء المتجر 🚀
+</button>
+
+</div>
+</div>
 </section>
 
 
-<!-- ================= DASHBOARD ================= -->
+<!-- لوحة التحكم -->
 <section id="dashboard" class="page dashboard">
 
-<div class="dash-nav">
+<aside class="side">
 
-  <div class="logo">N<span>AT</span>SLA</div>
+<div class="logo">
+N<span class="blue">A</span>
+</div>
 
-  <button class="small-btn" onclick="showPage('home')">
-    تسجيل الخروج
-  </button>
+<button class="active" onclick="dash('overview')">📊 الرئيسية</button>
+<button onclick="dash('products')">📦 المنتجات</button>
+<button onclick="dash('orders')">🛒 الطلبات</button>
+<button onclick="dash('customers')">👥 العملاء</button>
+<button onclick="dash('settings')">⚙️ الإعدادات</button>
+
+</aside>
+
+<main class="main">
+
+<div class="top">
+<div>
+<h1>لوحة التحكم</h1>
+<p style="color:#8190a7;margin-top:7px">
+مرحبًا بك في متجرك
+</p>
+</div>
+
+<button class="btn" onclick="go('home')">
+خروج
+</button>
+</div>
+
+
+<div id="overview">
+
+<div class="stats">
+
+<div class="stat">
+<small>💰 المبيعات</small>
+<strong>2,450 د.أ</strong>
+</div>
+
+<div class="stat">
+<small>📦 الطلبات</small>
+<strong>128</strong>
+</div>
+
+<div class="stat">
+<small>🛍️ المنتجات</small>
+<strong>36</strong>
+</div>
+
+<div class="stat">
+<small>👥 العملاء</small>
+<strong>892</strong>
+</div>
 
 </div>
 
-<div class="dash-content">
+<div class="grid">
 
-  <div class="welcome">
-    <h1>لوحة التحكم 👋</h1>
-    <p>
-      أهلاً بك في متجرك،
-      <strong id="dashStoreName">متجرك</strong>
-    </p>
-  </div>
+<div class="panel">
+<h2>آخر المنتجات</h2>
 
+<div class="product">
+<span>منتج تجريبي 1</span>
+<span class="tag">متوفر</span>
+</div>
 
-  <div class="stats">
+<div class="product">
+<span>منتج تجريبي 2</span>
+<span class="tag">متوفر</span>
+</div>
 
-    <div class="stat">
-      <div class="icon">💰</div>
-      <h3>المبيعات</h3>
-      <strong>2,450 د.أ</strong>
-    </div>
-
-    <div class="stat">
-      <div class="icon">📦</div>
-      <h3>الطلبات</h3>
-      <strong>128</strong>
-    </div>
-
-    <div class="stat">
-      <div class="icon">🛍️</div>
-      <h3>المنتجات</h3>
-      <strong>36</strong>
-    </div>
-
-    <div class="stat">
-      <div class="icon">👥</div>
-      <h3>العملاء</h3>
-      <strong>892</strong>
-    </div>
-
-  </div>
-
-
-  <div class="dashboard-grid">
-
-    <div class="panel">
-
-      <h2>نظرة على المبيعات 📈</h2>
-
-      <div class="chart">
-        <div class="bar" style="height:35%"></div>
-        <div class="bar" style="height:55%"></div>
-        <div class="bar" style="height:45%"></div>
-        <div class="bar" style="height:75%"></div>
-        <div class="bar" style="height:60%"></div>
-        <div class="bar" style="height:90%"></div>
-        <div class="bar" style="height:70%"></div>
-      </div>
-
-    </div>
-
-
-    <div class="panel">
-
-      <h2>آخر النشاطات</h2>
-
-      <div class="activity">
-        <div class="dot"></div>
-        <div>
-          طلب جديد 🎉
-          <br>
-          <small>منذ 5 دقائق</small>
-        </div>
-      </div>
-
-      <div class="activity">
-        <div class="dot"></div>
-        <div>
-          تمت إضافة منتج
-          <br>
-          <small>منذ 25 دقيقة</small>
-        </div>
-      </div>
-
-      <div class="activity">
-        <div class="dot"></div>
-        <div>
-          عميل جديد 👤
-          <br>
-          <small>منذ ساعة</small>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
+<div class="product">
+<span>منتج تجريبي 3</span>
+<span class="tag">متوفر</span>
+</div>
 
 </div>
 
+<div class="panel">
+<h2>آخر الطلبات</h2>
+
+<div class="product">
+<span>#1024</span>
+<span class="tag">جديد</span>
+</div>
+
+<div class="product">
+<span>#1023</span>
+<span class="tag">مكتمل</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="products" style="display:none">
+<div class="panel">
+<h2>📦 المنتجات</h2>
+<p style="color:#8190a7;margin-top:10px">
+هنا سنبني نظام إضافة وتعديل وحذف المنتجات.
+</p>
+</div>
+</div>
+
+
+<div id="orders" style="display:none">
+<div class="panel">
+<h2>🛒 الطلبات</h2>
+<p style="color:#8190a7;margin-top:10px">
+هنا ستظهر جميع طلبات العملاء وحالاتها.
+</p>
+</div>
+</div>
+
+
+<div id="customers" style="display:none">
+<div class="panel">
+<h2>👥 العملاء</h2>
+<p style="color:#8190a7;margin-top:10px">
+هنا ستتم إدارة العملاء.
+</p>
+</div>
+</div>
+
+
+<div id="settings" style="display:none">
+<div class="panel">
+<h2>⚙️ إعدادات المتجر</h2>
+<p style="color:#8190a7;margin-top:10px">
+هنا سنضيف إعدادات المتجر والدفع والشحن والتخصيص.
+</p>
+</div>
+</div>
+
+</main>
 </section>
 
 
 <script>
 
-function showPage(page){
+function go(page){
 
-  document.querySelectorAll(".page").forEach(function(p){
-    p.classList.remove("active");
-  });
+document.querySelectorAll(".page").forEach(function(x){
+x.classList.remove("active");
+});
 
-  document.getElementById(page).classList.add("active");
+document.getElementById(page).classList.add("active");
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+window.scrollTo(0,0);
 }
 
 
-/* تسجيل الدخول */
-function loginUser(){
+function login(){
 
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
+let email=document.getElementById("email").value;
+let password=document.getElementById("password").value;
 
-  if(email === "" || password === ""){
-    alert("اكتب البريد الإلكتروني وكلمة المرور أولاً");
-    return;
-  }
+if(!email || !password){
+alert("اكتب البريد وكلمة المرور أولاً");
+return;
+}
 
-  showPage("store");
+go("create");
 }
 
 
-/* معاينة المتجر */
-function previewStore(){
-
-  const name =
-    document.getElementById("storeName").value ||
-    "متجري الجديد";
-
-  const type =
-    document.getElementById("storeType").value;
-
-  const desc =
-    document.getElementById("storeDesc").value ||
-    "هنا سيظهر وصف متجرك بشكل جميل واحترافي.";
-
-  document.getElementById("previewName").textContent = name;
-  document.getElementById("previewType").textContent = type;
-  document.getElementById("previewDesc").textContent = desc;
-}
-
-
-/* إنشاء المتجر */
 function createStore(){
 
-  const name =
-    document.getElementById("storeName").value.trim();
+let name=document.getElementById("storeName").value;
+let slug=document.getElementById("storeSlug").value;
 
-  if(name === ""){
-    alert("اكتب اسم متجرك أولاً 🏪");
-    return;
-  }
+if(!name || !slug){
+alert("أكمل بيانات المتجر أولاً");
+return;
+}
 
-  document.getElementById("dashStoreName").textContent = name;
+localStorage.setItem("natslaStore",name);
+localStorage.setItem("natslaSlug",slug);
 
-  showPage("dashboard");
+go("dashboard");
+}
+
+
+function dash(section){
+
+document.querySelectorAll("#overview,#products,#orders,#customers,#settings")
+.forEach(function(x){
+x.style.display="none";
+});
+
+document.getElementById(section).style.display="block";
+
+document.querySelectorAll(".side button")
+.forEach(function(x){
+x.classList.remove("active");
+});
+
+event.currentTarget.classList.add("active");
 }
 
 </script>
